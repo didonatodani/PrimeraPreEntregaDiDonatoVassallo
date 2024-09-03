@@ -4,7 +4,7 @@ import CartWidget from "../CartWidget/CartWidget"
 const NavBar = () => {
   return (
     <header>
-      <h1>Bonees</h1>
+      <img src="./logo.png" alt="logo Bonees" />
       <nav>
         <ul>
           <li>
