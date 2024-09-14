@@ -1,13 +1,13 @@
 import "./Item.css"
+import { Link } from "react-router-dom"
 
-/* eslint-disable react/prop-types */
-const Item = ({name, price, img}) => {
+const Item = ({id, name, price, img}) => {
   return (
     <div className="cardProducts">
-        <img src={img} alt="{name}" />
+        <img src={img} alt={name} />
         <h3>{name}</h3>
         <p>Price: {price}</p>
-        <button>See more...</button>
+        <Link to={`/item/${id}`}>See more...</Link>
     </div>
   )
 }

@@ -1,17 +1,24 @@
- import ItemList from "../ItemList/ItemList"
-import "./ItemListContainer.css"
-import { useState, useEffect } from "react"
-import { getProducts } from "../../asynmock"
+import ItemList from "../ItemList/ItemList";
+import "./ItemListContainer.css";
+import { useState, useEffect } from "react";
+import { getProducts , getProductsByCat } from "../../asynmock";
+import { useParams } from "react-router-dom";
+
 
 const ItemListContainer = () => {
 
     const [products, setProducts] = useState([])
+    const {idCategory} = useParams ()
 
     useEffect(()=>{
-        getProducts()
-        .then(response => setProducts(response))
-        .catch(error => console.log(error))
-    }, [])
+
+        const showProducts = idCategory ? getProductsByCat : getProducts;
+
+        showProducts(idCategory)
+          .then(res => setProducts(res))
+          .catch(error => console.log(error))
+
+    }, [idCategory])
 
   return (
     <>
